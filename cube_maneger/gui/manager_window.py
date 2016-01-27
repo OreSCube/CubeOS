@@ -3,13 +3,14 @@
 
 import sys
 from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 import gui_abs as gui
 
 _config = dict(
     icon_setting_size=40,
     icon_game_size=82,
-    spacing_setting=28,
-    margin_setting=10,
+    spacing_setting=0,
+    margin_setting=(0, 0, 0, 0),
     stretch_game_tool=3,
     stretch_display_layout=13,
     stretch_display_widget=35,
@@ -18,7 +19,7 @@ _config = dict(
 
 
 class GameBox(gui.Frame):
-    def __init__(self, name, parent, spacing=0, margin=0):
+    def __init__(self, name, parent, spacing=0, margin=(0, 0, 0, 0)):
         super().__init__(name, parent)
         self.box = gui.Box(gui.Box._vertical, self, margin=margin,
                            spacing=spacing)
@@ -33,7 +34,7 @@ class GameBox(gui.Frame):
         return button
 
 
-class GlobalMenu(gui.MenegerFrame):
+class MangerWindow(gui.MenegerFrame):
     def __init__(self, name, parent=None, visual_parent=None,
                  config=_config):
         super().__init__(name, parent)
@@ -56,14 +57,13 @@ class GlobalMenu(gui.MenegerFrame):
         self.config = gui.SettingButton("config_button", None,
                                         self.cfg["icon_setting_size"])
 
-        display_layout = gui.Box(gui.Box._vertical, None, 0, 0)
-        box_base = gui.Box(gui.Box._horizontal, self, 0, 0)
+        display_layout = gui.Box(gui.Box._vertical, None, (0, 0, 0, 0), 0)
+        box_base = gui.Box(gui.Box._horizontal, self, (0, 0, 0, 0), 0)
         self.setting_layout = gui.Box(gui.Box._horizontal,
                                       QWidget_parent=self.setting_widget,
                                       spacing=self.cfg[
                                           "spacing_setting"],
-                                      margin=self.cfg[
-                                          "margin_setting"])
+                                      margin=(0, 0, 0, 0))
 
         box_base.addWidget(self.tool_game_box,
                            self.cfg["stretch_game_tool"])

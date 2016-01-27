@@ -20,5 +20,11 @@ global_game_window:
   game_tool_spacing: 60
 
 
+
+
+
 base:
   css_default: base.css
+  fullscreen: true
+  # если экран не полный
+  default_size: [1000, 500]
