@@ -1,0 +1,24 @@
+
+
+global_game_window:
+  # размеры иконок
+  icon_setting_size: 40
+  icon_game_size: 82
+  # между кнопками в нижней панели
+  spacing_setting: 50
+  # от кнопок до края панели в нижней панели
+  margin_setting: 10
+  # расстяжимость панели для кнопок с играми и рабочей панели
+  # горизонталь
+  stretch_game_tool: 3
+  stretch_display_layout: 13
+  # расстяжимость нижней панели и рабочей панели
+  # вертикаль
+  stretch_display_widget: 35
+  stretch_setting_widget: 1
+  # между кнопками игр
+  game_tool_spacing: 60
+
+
+base:
+  css_default: base.css
