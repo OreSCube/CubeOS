@@ -27,7 +27,7 @@ class ErrorAbstract(Exception): pass
 _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
 
-class WidgetPlugin(QtWidgets.QFrame):
+class GamePlugin(QtWidgets.QFrame):
     def __init__(self, name, root_path, index, tool_btn_name, style_file):
         super().__init__()
         self.name = name
@@ -108,7 +108,7 @@ class AdapterPluginsGame:
             m = p[:-3].replace(os.sep, ".")
             mod = import_module(m)
             obj = getattr(mod, self.class_name)()
-            if not isinstance(obj, WidgetPlugin):
+            if not isinstance(obj, GamePlugin):
                 raise ErrorType(
                     "плагин должен быть унаследован от WidgetPlugin")
             objects.append(obj)

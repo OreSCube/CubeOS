@@ -5,13 +5,13 @@ import os
 import sys
 from PyQt5 import QtWidgets
 
-from cube_maneger.game_plugin.seqgame import conf as cfg
+from cube_maneger.game_plugin.seqgame.etc import conf as cfg
 from cube_maneger.libs import plugin
 
 root_path = os.path.dirname(__file__)
 
 
-class GamePlugin(plugin.WidgetPlugin):
+class GamePlugin(plugin.GamePlugin):
     def __init__(self):
         super().__init__(cfg.object_name, root_path, cfg.index,
                          cfg.tool_object_name, cfg.style_name)
@@ -33,8 +33,10 @@ class GamePlugin(plugin.WidgetPlugin):
         return self.exit_btn
 
     def __doc__(self):
-        return "{}".format(plugin.WidgetPlugin)
+        return "{}".format(plugin.GamePlugin)
 
+    def __call__(self, *args, **kwargs):
+        return self
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

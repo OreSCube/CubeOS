@@ -12,7 +12,7 @@ import manager_window
 from cube_maneger.libs import plugin
 
 _GAME_PLUGIN_DIR_NAME = "game_plugin"
-_GAME_PLUGIN_MOD_NAME = "game"
+_GAME_PLUGIN_MOD_NAME = "run_plugin"
 _GAME_PLUGIN_CLASS = "GamePlugin"
 
 
@@ -46,19 +46,19 @@ class Main(QtWidgets.QMainWindow):
                 _GAME_PLUGIN_CLASS)
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
-        print(mod_objects)
         for game_widget in mod_objects:
             object_name = game_widget.name
             index = game_widget.index
             button_name = game_widget.tool_btn_name
             home_btn = game_widget.home_btn
             style_name = game_widget.css_path
-            print(style_name)
-
+            print(game_widget)
+            # print(style_name)
+            #
             self.plugin_valid(index, button_name, object_name)
 
             home_btn.clicked.connect(self.return_to_global_window)
-            self.stack.insertWidget(index, game_widget)
+            self.stack.insertWidget(index, game_widget())
 
             button = self.global_game_window.create_game_button(
                     button_name, index)
