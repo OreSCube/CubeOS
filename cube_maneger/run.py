@@ -4,7 +4,6 @@
 
 
 import os
-import time
 import sys
 
 import yaml
@@ -31,8 +30,10 @@ def main():
     app.setStyleSheet(open('{}'.format(css_path), "r").read())
 
     m = base_window.Main(config)
-    if config["base"]["fullscreen"]: m.showFullScreen()
-    else: m.resize(*config["base"]["default_size"])
+    if config["base"]["fullscreen"]:
+        m.showFullScreen()
+    else:
+        m.resize(*config["base"]["default_size"])
     m.show()
 
     app.exec()

@@ -7,7 +7,7 @@ global_game_window:
   # между кнопками в нижней панели
   spacing_setting: 50
   # от кнопок до края панели в нижней панели
-  margin_setting: 10
+  margin_setting: 0
   # расстяжимость панели для кнопок с играми и рабочей панели
   # горизонталь
   stretch_game_tool: 3
@@ -18,6 +18,13 @@ global_game_window:
   stretch_setting_widget: 1
   # между кнопками игр
   game_tool_spacing: 60
+  # box содержащий дисплей и настройки
+  # вокруг него margin [l, t, r, b]
+  display_layout_margin: [0, 0, 0, 0]
+  # cодержит tool_game_box и display_layout
+  base_layout_margin: [0, 0, 0, 0]
+  # панель для кнопок с настройками нижняя
+  setting_layout_margin: [0, 5, 0, 5]
 
 
 

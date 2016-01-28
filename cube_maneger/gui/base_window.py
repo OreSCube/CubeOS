@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PyQt5 import QtWidgets
+
 from PyQt5 import QtCore
+from PyQt5 import QtWidgets
+
 import gui_abs as gui
 import manager_window
-
-
 
 
 class Main(QtWidgets.QMainWindow):
@@ -24,9 +24,9 @@ class Main(QtWidgets.QMainWindow):
         box.addLayout(self.stack)
 
         self.global_game_window = manager_window.MangerWindow(
-                "manager_window", parent=self,
-                visual_parent=self.center,
-                config=config["global_game_window"])
+                "manager_window", self, config["global_game_window"],
+                self.center,
+        )
         self.stack.add_widget(self.global_game_window)
 
     def register_control(self, control_object, slot, *args):

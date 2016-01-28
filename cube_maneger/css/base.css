@@ -16,7 +16,7 @@ QFrame#manager_window {
 }
 
 QFrame#display {
-    background-color: #b6b6b6;
+    background-color: green;
     margin-right: auto;
 }
 
@@ -36,7 +36,7 @@ QFrame#tool_game {
 
 }
 
-QFrame#setting {
+QFrame#setting_box {
     background-color: lightgray;
     border-top: 1px solid #adadad;
     border-right: 1px solid #adadad;
@@ -44,6 +44,7 @@ QFrame#setting {
     border-bottom: 1px solid #adadad;;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     border-radius: 10px;
 }
 

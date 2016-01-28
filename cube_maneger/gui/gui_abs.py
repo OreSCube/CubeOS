@@ -5,7 +5,7 @@
 модуль предаставляет классы наслдеованые от qt классов для использования в основной программе
 """
 
-import sys
+
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5.QtCore import QObject
@@ -72,6 +72,17 @@ class SettingButton(QtWidgets.QPushButton, AbsGui):
         :type name: str
         """
         super().__init__(name, parent)
-
         self.setIconSize(QtCore.QSize(size, size))
         self.setFixedSize(size + 2, size + 2)
+
+class GameButton(QtWidgets.QToolButton, AbsGui):
+    def __init__(self, object_name, index):
+        super().__init__(object_name)
+        self.index = index
+
+    def __repr__(self):
+        return """
+        object - {};
+        object_name - {};
+        index - {}
+        """.format(self.__class__.__name__, self._name, self.index)
