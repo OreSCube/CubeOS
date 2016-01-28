@@ -3,10 +3,9 @@
 
 import glob
 import os
-import sys
 from importlib import import_module
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 
 _plugin_dir = "game_plugin"
 _mod_name = "game"
@@ -28,7 +27,7 @@ class ErrorAbstract(Exception): pass
 _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
 
-class WidgetPlugin(QtGui.QFrame):
+class WidgetPlugin(QtWidgets.QFrame):
     def __init__(self, name, root_path, index, tool_btn_name, style_file):
         super().__init__()
         self.name = name
@@ -115,8 +114,3 @@ class AdapterPluginsGame:
         return tuple(objects)
 
 
-if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
-    main = WidgetPlugin()
-    main.show()
-    sys.exit(app.exec_())

@@ -8,7 +8,6 @@ import sys
 
 import yaml
 from PyQt5 import QtWidgets
-
 import base_window
 
 
@@ -35,6 +34,7 @@ def main():
     else:
         m.resize(*config["base"]["default_size"])
     m.show()
+    m.add_games()
 
     app.exec()
 

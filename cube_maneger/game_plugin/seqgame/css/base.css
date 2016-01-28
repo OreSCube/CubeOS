@@ -1,0 +1,10 @@
+QFrame#seqgame {
+    border-top: 1px solid #adadad;
+    border-right: 80px solid #adadad;
+    border-left: 80px solid #adadad;
+    border-bottom: 1px solid #adadad;;
+}
+
+QPushButton#game1 {
+    border: 5px solid #adadad;
+}

@@ -15,7 +15,7 @@ class GameBox(gui.Frame):
                 QtCore.Qt.AlignTop | QtCore.Qt.AlignCenter)
 
     def create_button(self, name, index, icon_size):
-        button = gui.GameButton(name, index)
+        button = gui.GameButton(name, self, index)
         button.setIconSize(
                 QtCore.QSize(icon_size, icon_size))
         self.box.insertWidget(index, button)

@@ -76,8 +76,8 @@ class SettingButton(QtWidgets.QPushButton, AbsGui):
         self.setFixedSize(size + 2, size + 2)
 
 class GameButton(QtWidgets.QToolButton, AbsGui):
-    def __init__(self, object_name, index):
-        super().__init__(object_name)
+    def __init__(self, name, parent, index):
+        super().__init__(name, parent,)
         self.index = index
 
     def __repr__(self):

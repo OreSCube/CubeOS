@@ -16,7 +16,7 @@ QFrame#manager_window {
 }
 
 QFrame#display {
-    background-color: green;
+    background-color: #B6B6B6;
     margin-right: auto;
 }
 
