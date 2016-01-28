@@ -3,16 +3,17 @@
 
 
 
-from cube_maneger.game_plugin.default_conf import *
+from os.path import dirname, join
 
 root_path = dirname(__file__)
 
-# resource = "resource"
-# icons = "icons"
-# tool_name_icon = "tool2.png"
-# tool_name_icon_hover = "tool_hover.png"
-# tool_name_icon_pressed = "tool_pressed.png"
-# style_name = "base.css"
+resource = "resource"
+icons = "icons"
+tool_name_icon = "tool.png"
+tool_name_icon_hover = "tool_hover.png"
+tool_name_icon_pressed = "tool_pressed.png"
+style_name = "base.css"
+style_dir = "css"
 
 
 icons_path = join(root_path, resource, icons)

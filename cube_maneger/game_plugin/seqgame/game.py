@@ -3,8 +3,6 @@
 
 import os
 import sys
-
-import sys
 from PyQt5 import QtWidgets
 
 from cube_maneger.game_plugin.seqgame import conf as cfg
@@ -26,9 +24,9 @@ class GamePlugin(plugin.WidgetPlugin):
 
         self.exit_btn = QtWidgets.QPushButton("EXIT", self)
 
-        css_path = self.css_file(self.root_path, cfg.style_dir,
+        self.css_path = os.path.join(self.root_path, cfg.style_dir,
                                  self.style_file)
-        self.setStyleSheet(open('{}'.format(css_path), "r").read())
+        self.setStyleSheet(open('{}'.format(self.css_path), "r").read())
 
     @property
     def home_btn(self):

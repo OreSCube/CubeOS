@@ -67,9 +67,10 @@ class WidgetPlugin(QtWidgets.QFrame):
         return '''
         object - {}
         index - {}
-        tool_icon - {}'''.format(
+        name - {}'''.format(
             self.__class__.__name__,
-            self.index, self.tool_icon)
+            self.index,
+        self.name)
 
 
 class AdapterPluginsGame:
