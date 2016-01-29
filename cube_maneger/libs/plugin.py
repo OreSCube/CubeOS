@@ -3,13 +3,19 @@
 
 import glob
 import os
+import yaml
 from importlib import import_module
 
 from PyQt5 import QtWidgets
 
-_plugin_dir = "game_plugin"
-_mod_name = "game"
-_class_name = "GamePlugin"
+_PLUGIN_DIR = "game_plugin"
+_MOD_NAME = "game"
+_CLASS_NAME = "GamePlugin"
+_ETC_DIR = "etc"
+_CSS_DIR = "css"
+_RESOURCE_DIR = "resource"
+_ICONS_DIR = "icons"
+_CONFIG_FILE = "config.yaml"
 
 
 class ErrorIndex(Exception): pass
@@ -26,51 +32,29 @@ class ErrorAbstract(Exception): pass
 
 _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
+def get_config(root):
+    path = os.path.join(root, _ETC_DIR, _CONFIG_FILE)
+    with open(path, "r") as obj:
+        return yaml.load(obj)
 
 class GamePlugin(QtWidgets.QFrame):
-    def __init__(self, name, root_path, index, tool_btn_name, style_file):
+    def __init__(self, **kwargs):
         super().__init__()
-        self.name = name
-        self.root_path = root_path
-        self.index = index
-        self.tool_btn_name = tool_btn_name
-        self.style_file = style_file
+        self.config = dict()
+        self.config_lst = (
+        'name', 'index', 'tool_btn_name', 'style_name')
+        for opt in self.config_lst:
+            self.config[opt] = kwargs[opt]
 
-    def css_file(self, root, dir, file):
-        return os.path.join(root, dir, file)
+        self.setObjectName(self.config['name'])
 
-    @property
-    def home_btn(self):
-        raise ErrorAbstract(
-            "должно вернуть ссылку на кнопку отвечающую за возврат в меню")
-
-    @property
-    def index(self):
-        return self._index
-
-    @index.setter
-    def index(self, i):
-        if i != 0:
-            self._index = i
-        else:
-            raise ErrorIndex("индекс не может быть 0")
-
-    @property
-    def root_path(self):
-        return self._root_path
-
-    @root_path.setter
-    def root_path(self, path):
-        self._root_path = path
 
     def __repr__(self):
         return '''
         object - {}
-        index - {}
-        name - {}'''.format(
-            self.__class__.__name__,
-            self.index,
-        self.name)
+        options - {}
+        '''.format(
+                self.__class__.__name__, self.config)
 
 
 class AdapterPluginsGame:
@@ -92,7 +76,7 @@ class AdapterPluginsGame:
         pkg_list = [p for p in glob.glob(self.plugin_dir + "/*")]
         for p in pkg_list:
             mod_list.extend(glob.glob("".join(
-                [p, os.sep, "*", self.mod_name + self.mod_ext])))
+                    [p, os.sep, "*", self.mod_name + self.mod_ext])))
         return mod_list
 
     def plugin_objects(self, path_list_plug):
@@ -110,8 +94,6 @@ class AdapterPluginsGame:
             obj = getattr(mod, self.class_name)()
             if not isinstance(obj, GamePlugin):
                 raise ErrorType(
-                    "плагин должен быть унаследован от WidgetPlugin")
+                        "плагин должен быть унаследован от WidgetPlugin")
             objects.append(obj)
         return tuple(objects)
-
-

@@ -11,10 +11,6 @@ import gui_abs as gui
 import manager_window
 from cube_maneger.libs import plugin
 
-_GAME_PLUGIN_DIR_NAME = "game_plugin"
-_GAME_PLUGIN_MOD_NAME = "run_plugin"
-_GAME_PLUGIN_CLASS = "GamePlugin"
-
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self, config):
@@ -42,8 +38,8 @@ class Main(QtWidgets.QMainWindow):
 
     def add_games(self):
         self.adapter_plugin = plugin.AdapterPluginsGame(
-                _GAME_PLUGIN_DIR_NAME, _GAME_PLUGIN_MOD_NAME,
-                _GAME_PLUGIN_CLASS)
+                plugin._PLUGIN_DIR, plugin._MOD_NAME,
+                plugin._CLASS_NAME)
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
@@ -55,14 +51,14 @@ class Main(QtWidgets.QMainWindow):
             print(game_widget)
             # print(style_name)
             #
-            self.plugin_valid(index, button_name, object_name)
-
-            home_btn.clicked.connect(self.return_to_global_window)
-            self.stack.insertWidget(index, game_widget())
-
-            button = self.global_game_window.create_game_button(
-                    button_name, index)
-            button.clicked.connect(partial(self.press_game, index))
+            # self.plugin_valid(index, button_name, object_name)
+            #
+            # home_btn.clicked.connect(self.return_to_global_window)
+            # self.stack.insertWidget(index, game_widget())
+            #
+            # button = self.global_game_window.create_game_button(
+            #         button_name, index)
+            # button.clicked.connect(partial(self.press_game, index))
 
     def plugin_valid(self, *atr):
         for i in atr:
